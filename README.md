@@ -21,3 +21,33 @@ Verify it is working:
 ```bash
 curl http://127.0.0.1:8080/health
 ```
+
+## Docker
+
+Copy the example config:
+```bash
+cp headscale/config-example.yaml config.yaml
+```
+
+Then update these two values in `config.yaml`:
+```yaml
+listen_addr: 0.0.0.0:8080
+grpc_listen_addr: 0.0.0.0:50443
+```
+
+Build the image:
+```bash
+docker build -t headscale:latest .
+```
+
+Run the container:
+```bash
+docker run --rm -p 8080:8080 \
+  -v $(pwd)/config.yaml:/etc/headscale/config.yaml \
+  headscale:latest
+```
+
+Verify it is working:
+```bash
+curl http://127.0.0.1:8080/health
+```
