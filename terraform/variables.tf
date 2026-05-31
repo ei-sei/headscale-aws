@@ -27,7 +27,12 @@ variable "name_prefix" {
   type        = string
 }
 
-variable "ecr_repository_name" {
-  description = "The name of the ECR repository."
+variable "domain_name" {
+  description = "The domain name for the ACM certificate."
+  type        = string
+}
+
+variable "cloudflare_zone_id" {
+  description = "The Cloudflare Zone ID to use for validating the ACM"
   type        = string
 }

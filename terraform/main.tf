@@ -11,3 +11,10 @@ module "ecr" {
   environment = var.environment
   name_prefix = var.name_prefix
 }
+
+module "acm" {
+  source             = "./modules/acm"
+  domain_name        = var.domain_name
+  cloudflare_zone_id = var.cloudflare_zone_id
+  environment        = var.environment
+}
